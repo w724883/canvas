@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+	<style type="text/css">
+	*{padding:0;margin: 0;}
+	body{overflow: hidden;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+	var canvas = document.getElementById('canvas');
+	var context = canvas.getContext('2d');
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	/*绘图
+	fill()	填充当前绘图（路径）
+	stroke()	绘制已定义的路径
+	beginPath()	起始一条路径，或重置当前路径
+	moveTo()	把路径移动到画布中的指定点，不创建线条
+	closePath()	创建从当前点回到起始点的路径
+	lineTo()	添加一个新点，然后在画布中创建从该点到最后指定点的线条
+	clip()	从原始画布剪切任意形状和尺寸的区域
+	quadraticCurveTo()	创建二次贝塞尔曲线
+	bezierCurveTo()	创建三次方贝塞尔曲线
+	arc()	创建弧/曲线（用于创建圆形或部分圆）
+	arcTo()	创建两切线之间的弧/曲线
+	*/
+	// context.beginPath();
+	// context.lineWidth="5";
+	// context.strokeStyle="green";
+	// context.fillStyle="yellow";
+	// context.moveTo(100,100);
+	// context.lineTo(200,200);
+	// context.lineTo(150,300);
+	// context.lineTo(100,100);
+	// context.fill();
+	// context.stroke();
+	// context.closePath();
+
+	// context.beginPath();
+	// context.strokeStyle="red";
+	// context.moveTo(500,200);
+	// context.lineTo(500,300);
+	// context.stroke();
+	// context.closePath();
+
+	//rect
+	// context.rect(300,100,200,100);
+	// context.stroke();
+	// context.fill();
+	// context.fillRect(300,300,200,100);
+	// context.strokeRect(300,300,200,100);
+	// // clearRect
+	// context.clearRect(350,350,20,20);
+	
+	//lineCap
+	// context.beginPath();
+	// context.moveTo(100,100);
+	// context.lineTo(200,100);
+	// context.lineWidth="10";
+	// context.lineCap = 'butt';// butt round square
+	// context.stroke();
+
+	// lineJoin  miterLimit
+	// context.beginPath();
+	// context.lineWidth = 10;
+	// context.miterLimit = 5;
+	// context.moveTo(100,100);
+	// context.lineTo(200,100);
+	// context.lineTo(150,120);
+	// context.lineJoin = 'bevel';// miter bevel round
+	// context.stroke();
+
+	//clip
+	// context.rect(300,100,200,100);
+	// context.stroke();
+	// context.clip();
+	// context.fillRect(400,150,200,100);
+
+	// arc(x,y,r,sAngle,eAngle,counterclockwise) 圆弧
+	// context.arc(300,100,50,0,2*Math.PI);
+	// context.stroke();
+
+	// //非零环绕原则
+	// context.arc(400, 300, 200, 0, Math.PI * 2 ,false);
+	// context.arc(400, 300, 230, 0, Math.PI * 2 ,true);
+	// context.fillStyle = "yellow";
+	// context.strokeStyle = 'red';
+	// context.stroke()
+	// // context.fill();
+
+	//arcTo(x1,y1,x2,y2,r) 特殊圆弧     
+	// context.lineTo(300,20);      
+	// context.arcTo(150,20,150,70,50); 
+	// context.lineTo(150,120); 
+	// context.stroke();
+
+	//二次quadraticCurveTo(cpx,cpy,x,y);
+	// context.moveTo(400,400);
+	// context.quadraticCurveTo(100,200,300,300);
+	// context.stroke();
+
+	// 三次bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y);
+	// context.moveTo(300,300);
+	// context.bezierCurveTo(20,100,200,100,200,20);
+	// context.stroke();
+
+	//createLinearGradient(sx,sy,ex,ey) 线性渐变
+	// var linear = context.createLinearGradient(300,300,500,300);
+	// linear.addColorStop(0,"yellow");
+	// linear.addColorStop(1,"green");
+	// context.fillStyle = linear;
+	// context.fillRect(300,300,200,100);
+
+	//createRadialGradient(ix,iy,ir,ox,oy,or) 径向渐变
+	// var radial = context.createRadialGradient(400,350,0,400,350,50);
+	// radial.addColorStop(0,"yellow");
+	// radial.addColorStop(1,"green");
+	// context.fillStyle = radial;
+	// context.fillRect(300,300,200,100);
+
+	//createPattern(img,repeat) 重复样式
+	// context.beginPath();
+	// context.clearRect(300,300,200,100); 
+	// var img = new Image();
+	// img.src = 'canvas.gif';
+	// img.onload = function() {
+	//   var repeat = context.createPattern(img,"repeat");
+	//   context.fillStyle = repeat;
+	//   context.fillRect(300,300,200,100);
+	// };
+	
+	//transform save() restore()
+	// context.save();
+	// context.translate(100,100);
+	// context.fillRect(100,100,200,200);
+	// context.restore();
+
+	//scale(x,y)
+	// context.save();
+	// context.scale(2,2);
+	// context.fillRect(200,200,200,200);
+	// context.restore();
+
+	//rotate(deg)
+	// context.save();
+	// context.translate(500,500);
+	// context.rotate(45*Math.PI/180);
+	// context.fillRect(0,0,50,50);
+	// context.restore();
+
+	// transform(a水平缩放,b水平倾斜,c垂直倾斜,d垂直缩放,e水平位移,f垂直位移)
+	// context.save();
+	// context.transform(2,45*Math.PI/180,0,1,200,200);
+	// context.fillRect(0,0,50,50);
+	// context.restore();
+
+	// setTransform(a水平缩放,b水平倾斜,c垂直倾斜,d垂直缩放,e水平位移,f垂直位移)
+	// context.setTransform(2,0,0,1,300,300);
+	// context.fillRect(0,0,50,50);
+
+	//font
+	// context.save();
+	//font = "font-style(normal,italic,oblique) font-variant(normal,small-caps) font-weight(normal,bold,bolder,lighter) font-size/line-height font-family caption(使用标题控件的字体) icon(使用用于标记图标的字体) menu(使用用于菜单中的字体) message-box(使用用于对话框中的字体) small-caption(使用用于标记小型控件的字体) status-bar	(使用用于窗口状态栏中的字体)"
+	// context.font = "50px MicrosoftYahei";
+	// context.textAlign = 'right'; //left center right start end
+	// context.textBaseline = 'top';//alphabetic top middle bottom ideographic hangig
+	// context.fillStyle = "red";
+	// context.strokeStyle = 'green';
+	// //fillText(string,x,y,[maxlength])
+	// context.fillText('UX',400,400);
+	// // context.restore();
+	// //strokeText(string,x,y,[maxlength])
+	// context.strokeText('UX',500,500);
+	// //measureText
+	// context.strokeText('UX,length:'+context.measureText('UX').width,500,700);
+	// context.restore();
+	
+	// shadowColor
+	// context.save();
+	// context.shadowColor = "red";
+	// context.shadowOffsetX = 10;
+	// context.shadowOffsetY = 10;
+	// context.shadowBlur = 10;
+
+	// // globalAlpha
+	// context.globalAlpha = 0.5;
+
+	// //globalCompositeOperation 叠加效果 source-over source-atop source-in source-out destination-over destination-atop destination-in destination-out lighter darker copy xor
+	// context.save();
+	// context.fillStyle = "green";
+	// context.fillRect(100,100,200,200);
+	// context.globalCompositeOperation = "source-in";
+	// context.fillStyle = "red";
+	// context.fillRect(200,200,200,200);
+	// context.restore();
+
+	// context.save();
+	// context.fillStyle = "green";
+	// context.fillRect(600,100,200,200);
+	// context.fillStyle = "red";
+	// context.fillRect(700,200,200,200);
+	// context.restore();
+
+	//isPointInPath
+	// context.rect(300,300,150,100);
+	// if (context.isPointInPath(300,300)){
+	// 	context.fill();
+	// };
+
+	//getBoundingClientRect() 获取canvas相对文档的位置
+	// canvas.addEventListener('click',function(e){
+	// 	var x = e.pageX;
+	// 	var y = e.pageY;
+	// 	var point = getPointOnCanvas(canvas,x,y);
+	// 	console.log('x:'+point.x);
+	// 	console.log('y:'+point.y);
+	// },false);
+	// function getPointOnCanvas(canvas, x, y){
+
+	//     var box =canvas.getBoundingClientRect();
+	//     return { x: x- box.left *(canvas.width / box.width), y:y - box.top  * (canvas.height / box.height)};
+	// }
+
+	// drawImage(img,sx,sy,sw,sh,cx,cy,cw,wh)
+	// var img = new Image();
+	// img.src = 'canvas.gif';
+	// img.onload = function(){
+	// 	context.drawImage(img,200,200,100,100);
+	// }
+
+	// // getImageData(x,y,w,h)获取指定区域的颜色值
+	// // putImageData(data,x,y)把指定颜色数据放在指定位置
+	// // createImageData(w,h)创建wh宽高的颜色数据 每个像素由rgba组成[R,G,B,A]
+	// context.fillStyle = 'red';
+	// context.fillRect(200,200,200,200);
+	// var data = context.getImageData(250,250,50,50);
+	// context.putImageData(data,600,300);
+
+	// var img = context.createImageData(50,50);
+	// for (var i = 0; i < img.data.length; i++) {
+	// 	img.data[i+0] = 100;
+	// 	img.data[i+1] = 255;
+	// 	img.data[i+2] = 255;
+	// 	img.data[i+3] = 255;
+	// };
+	// context.putImageData(img,50,50);
+
+	// // toDataURL()
+	// var img = new Image();
+	// img.src = 'canvas.gif';
+	// img.onload = function(){
+	// 	context.drawImage(img,200,200,100,100);
+	// 	var url = canvas.toDataURL();
+	// 	var image = document.createElement("img");
+	// 	image.src = url;
+	// 	document.body.appendChild(image);
+	// }
+
+	// 动画
+	// context.save();
+	// var step = 100;
+	// var animation;
+	// context.fillStyle = 'red';
+	// function update(){
+	// 	context.clearRect(100,100,canvas.width,canvas.height);
+	// 	context.fillRect(step,100,100,100);
+	// 	step++
+	// 	if (step <= 1000){
+	// 	    animation = window.requestAnimationFrame(update);
+	// 	}else{
+	// 		window.cancelAnimationFrame(animation);
+	// 	}
+	// }
+	// animation = window.requestAnimationFrame(update);
+
+	</script>
+</body>
+</html>
